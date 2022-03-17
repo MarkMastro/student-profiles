@@ -1,0 +1,15 @@
+.student-profile{
+    border-bottom: solid 1px rgb(0,0,0,0.25);
+    background-color: white;
+    padding:10px;
+}
+
+.student-information{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+}
+.student-picture{
+    border-bottom: solid 1px rgb(0,0,0,0.25);
+    border-radius: 100%;
+    width:100px;
+}
