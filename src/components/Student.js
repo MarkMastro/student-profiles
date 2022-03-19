@@ -5,6 +5,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {useState} from "react";
+import StudentTag from "./StudentTag";
 
 
 library.add(fas, fab);
@@ -12,7 +13,9 @@ library.add(fas, fab);
 
 export default function Student(props){
 
-const [isExpanded, setIsExpanded] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [tagInput, setTagInput] = useState("");
+    const [studentTags, setStudentTags] = useState([]);
 
     const {
         city,
@@ -25,12 +28,28 @@ const [isExpanded, setIsExpanded] = useState(false);
         pic,
         skill
     } = props;
+
+    const onDelete=(e)=>{
+        e.preventDefault();
+        setStudentTags(
+            studentTags.filter(tag=>tag!==e.target.value)
+        )
+    }
+
     const avg = grades.reduce((a, b) => parseInt(a) + parseInt(b)) / grades.length;
     const gradesObj = grades.map((grade, index)=>(<p className="student-grades" key={index}>Test {index} {grade}%</p>))
+    const tags = studentTags.map((tag, index)=>(<StudentTag tag={tag} key={index} onDelete={onDelete}/>))
     
     const onExpand=()=>{
         setIsExpanded(!isExpanded)
     }
+    const addTag=(e)=>{
+        e.preventDefault();
+        setStudentTags([...studentTags, tagInput])
+        setTagInput("")
+    }
+
+
     return(
         
             <div className="student-card">
@@ -45,9 +64,16 @@ const [isExpanded, setIsExpanded] = useState(false);
                             <p>Average: {avg} </p>
                         
                             {isExpanded ? gradesObj : null}
+                            {tags}
+                            <form onSubmit={e=>addTag(e)}>
+                                <input
+                                placeholder='Add tag'
+                                value= {tagInput}
+                                onChange={e=>setTagInput(e.target.value)}
+                                ></input>
+                            </form>
 
                         </div>
-
                     </div>
                 </div>
                

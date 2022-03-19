@@ -10,6 +10,8 @@ function App() {
   const [studentData, setStudentData] = useState([]);
   const [studentDataDisplay, setStudentDataDisplay] = useState([]);
   const [studentSearch, setStudentSearch] = useState("");
+  const [studentTagSearch, setStudentTagSearch] = useState("");
+
 
 
 
@@ -41,7 +43,14 @@ const studentsArray = studentDataDisplay.map((student)=>{
         value={studentSearch}
         placeholder="Search for a students name"
         >
-            
+        </input>
+        <input
+        className='student-tags-search' 
+        type="text"
+        onChange={(e)=>{setStudentTagSearch(e.target.value)}}
+        value={studentTagSearch}
+        placeholder="Search for students' tags"
+        >
         </input>
       {studentsArray}
     </div>

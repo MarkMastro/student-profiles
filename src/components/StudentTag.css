@@ -1,0 +1,28 @@
+
+.student-tag{
+    display: inline;
+    background: rgb(207, 206, 206);
+    font-family:'Times New Roman', Times, serif ;
+    font-size: 16px;
+    height: 32px;
+    font-weight: bold;
+    padding:8px;
+    border-radius: 3px;
+    margin: 6px;
+    margin-top:5px;
+    text-align: center;
+    display: inline-block;
+}
+.student-tag:hover{
+    background:rgb(100, 100, 100);
+}
+/* .student-tag:hover .delete-tag{
+    background:rgb(100, 100, 100);
+    color:red;
+
+}
+.delete-tag{
+    color: rgb(207, 206, 206);
+    float: right;
+    top: 10px;
+} */
