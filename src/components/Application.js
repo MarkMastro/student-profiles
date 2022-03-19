@@ -13,13 +13,15 @@ function App() {
 
 useEffect(()=>{
     axios.get("https://api.hatchways.io/assessment/students")
-    .then(response=>setStudentData(response.data.students))
+    .then(response=>{
+        setStudentData(response.data.students)
+        setStudentDataDisplay(response.data.students)
+    })
 
 },[])
 
 useEffect(()=>{
 
-    console.log("perfo")
     const filteredStudents = studentData.filter( student => student.firstName.concat(student.lastName).toLowerCase().includes(studentSearch.toLowerCase()))
     setStudentDataDisplay(filteredStudents)
 
@@ -30,10 +32,12 @@ const studentsArray = studentDataDisplay.map((student)=>{
 })
   return (
     <div className="application" >
-        <input 
+        <input
+        className='student-name-search' 
         type="text"
         onChange={(e)=>{setStudentSearch(e.target.value)}}
         value={studentSearch}
+        placeholder="Search for a students name"
         >
             
         </input>

@@ -4,4 +4,22 @@
     margin-top:100px;
     border: solid 2px rgb(0,0,0,0.25);
     border-radius:10px;
+    background-color: white;
+}
+.student-name-search{
+    
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
+        border: none;
+        border-bottom: 3px solid lightgrey;
+        height: 24px;
+        margin-top: 12px;
+        padding-left: 4px;
+        padding-bottom: 4px;
+    
+  
+}
+textarea:focus, input:focus{
+    outline: none;
 }
