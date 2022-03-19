@@ -1,11 +1,15 @@
-.student{
+.student-card{
     border-bottom: solid 1px rgb(0,0,0,0.25);
     background-color: white;
     padding:10px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.student{
+    display: flex;
+    flex-direction: row;
 }
 .student-picture{
     border-bottom: solid 1px rgb(0,0,0,0.25);
@@ -17,6 +21,11 @@
 p{
     margin:3px;
 }
+button{
+    background: none;
+    border: none;
+}
+
 .student-name{
     margin: 3px;
     font-size: 40px;
@@ -25,4 +34,11 @@ p{
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
   margin-left: 25px;
+}
+.student-expand-button{
+  font-size: 50px;  
+  color:gray;
+}
+.student-expand-button:hover{
+    color:black;
 }
