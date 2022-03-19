@@ -5,7 +5,7 @@ export default function Student(props){
         city,
         company,
         email,
-         firstName,
+        firstName,
         grades,
         id,
         lastName,
