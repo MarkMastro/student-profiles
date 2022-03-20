@@ -15,8 +15,7 @@ export default function Student(props){
 
     const [isExpanded, setIsExpanded] = useState(false);
     const [tagInput, setTagInput] = useState("");
-    const [studentTags, setStudentTags] = useState([]);
-
+    // const [studentTags, setStudentTags] = useState([]);
     const {
         city,
         company,
@@ -26,29 +25,32 @@ export default function Student(props){
         id,
         lastName,
         pic,
-        skill
+        skill,
+        addTag,
+        deleteTag,
+        tags
     } = props;
 
-    const onDelete=(e)=>{
-        e.preventDefault();
-        setStudentTags(
-            studentTags.filter(tag=>tag!==e.target.value)
-        )
+    const onDeleteTag=(tag)=>{
+        deleteTag(tag, id);
     }
+
 
     const avg = grades.reduce((a, b) => parseInt(a) + parseInt(b)) / grades.length;
     const gradesObj = grades.map((grade, index)=>(<p className="student-grades" key={index}>Test {index} {grade}%</p>))
-    const tags = studentTags.map((tag, index)=>(<StudentTag tag={tag} key={index} onDelete={onDelete}/>))
+    const studentTags = tags.map((tag, index)=>(<StudentTag tag={tag} key={index} onDelete={onDeleteTag}/>))
     
     const onExpand=()=>{
         setIsExpanded(!isExpanded)
     }
-    const addTag=(e)=>{
+    
+    const onTagSubmit=(e)=>{
         e.preventDefault();
-        setStudentTags([...studentTags, tagInput])
-        setTagInput("")
+        addTag(tagInput, id);
+        setTagInput("");
     }
 
+   
 
     return(
         
@@ -64,8 +66,8 @@ export default function Student(props){
                             <p>Average: {avg} </p>
                         
                             {isExpanded ? gradesObj : null}
-                            {tags}
-                            <form onSubmit={e=>addTag(e)}>
+                            {studentTags}
+                            <form onSubmit={onTagSubmit}>
                                 <input
                                 placeholder='Add tag'
                                 value= {tagInput}
