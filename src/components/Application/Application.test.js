@@ -1,7 +1,4 @@
 import React from "react";
-import { getByPlaceholderText, getByText, render, screen } from "@testing-library/react";
-import Application from "./Application";
-import Student from "../Student/Student";
 import axios from "axios";
 
 //create mock for axios calls

@@ -15,7 +15,6 @@ export default function Student(props){
 
     const [isExpanded, setIsExpanded] = useState(false);
     const [tagInput, setTagInput] = useState("");
-    // const [studentTags, setStudentTags] = useState([]);
     const {
         city,
         company,
@@ -35,15 +34,21 @@ export default function Student(props){
         deleteTag(tag, id);
     }
 
-
+    //get the students average grade
     const avg = grades.reduce((a, b) => parseInt(a) + parseInt(b)) / grades.length;
+
+    //add all grades to an array
     const gradesObj = grades.map((grade, index)=>(<p className="student-grades" key={index}>Test {index} {grade}%</p>))
+
+    //get all student tags to an array
     const studentTags = tags.map((tag, index)=>(<StudentTag tag={tag} key={index} onDelete={onDeleteTag}/>))
     
+    //change expanded state when button is pressed
     const onExpand=()=>{
         setIsExpanded(!isExpanded)
     }
     
+    //handle tag for submission, calls addTag from Application component
     const onTagSubmit=(e)=>{
         e.preventDefault();
         addTag(tagInput, id);

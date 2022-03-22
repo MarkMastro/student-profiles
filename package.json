@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
-    "css-loader": "^6.7.1"
+    "css-loader": "^6.7.1",
+    "eslint": "^8.11.0"
   }
 }

@@ -12,7 +12,7 @@ function App() {
   const [studentSearch, setStudentSearch] = useState("");
   const [studentTagSearch, setStudentTagSearch] = useState("");
 
-
+//adds tag array to each student in state
 const addTags=(students)=>{
   const studentsWithTags = [];
   students.forEach(student => {
@@ -22,6 +22,7 @@ const addTags=(students)=>{
   setStudentData(studentsWithTags);
 }
 
+//grab student data on initial render
 useEffect(()=>{
     axios.get("https://api.hatchways.io/assessment/students")
     .then(response=>{
@@ -30,6 +31,8 @@ useEffect(()=>{
     })
 
 },[])
+
+//filter students by name and tags when either the student data changes or either of the search fields is changed
 
 useEffect(()=>{
     let filteredStudents =  studentData.filter(student => {
@@ -45,11 +48,12 @@ useEffect(()=>{
       filteredStudents=studentData;
     }
     filteredStudents = filteredStudents.filter( student => student.firstName.concat(student.lastName).toLowerCase().includes(studentSearch.toLowerCase().trim()))
+    //set state to students which pass the search filters
     setStudentDataDisplay(filteredStudents)
 
 },[studentTagSearch, studentSearch, studentData])
 
-
+//add tags function to allow tags to be added to state, allows to be filterable from search components
 const addTag=(tagInput, studentId)=>{
   const studentArray = [...studentData]
 
@@ -69,7 +73,7 @@ const deleteTag=(tag, studentId)=>{
   setStudentDataDisplay(studentArray)
   
 }
-
+//create array of student components to render
 const studentsArray = studentDataDisplay.map((student)=>{
  return <Student {...student} key={student.id} addTag={addTag} deleteTag={deleteTag}/>
 })
