@@ -67,8 +67,6 @@ describe('Student Component', function(){
         expect(screen.getByText("Test 0 78%")).toBeInTheDocument();
         fireEvent.click(screen.getByTestId("expand-button"));
         expect(screen.queryByText("Test 0 78%")).toBeNull();
-
-
     })
 
 });
