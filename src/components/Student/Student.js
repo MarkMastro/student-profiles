@@ -79,7 +79,7 @@ export default function Student(props){
                     </div>
                 </div>
                
-                <button className="student-expand-button" onClick={onExpand}>
+                <button data-testid="expand-button" className="student-expand-button" onClick={onExpand}>
                     {isExpanded ? <FontAwesomeIcon icon="fa-minus" /> : <FontAwesomeIcon icon="fa-plus" />}
                     
                 </button>

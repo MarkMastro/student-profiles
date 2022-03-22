@@ -1,5 +1,5 @@
 import React from "react";
-import {  render, screen } from "@testing-library/react";
+import {  fireEvent, getByText, render, screen } from "@testing-library/react";
 
 /*
   We import the component that we are testing
@@ -40,22 +40,35 @@ describe('Student Component', function(){
       render(<Student {...student} key={student.id} addTag={student.addTag} deleteTag={student.deleteTag}/>);
       expect(screen.getByText("Email: iorton0@imdb.com")).toBeInTheDocument();
 })
-it("renders Student component with name correctly", () => {
-      
-    render(<Student {...student} key={student.id} addTag={student.addTag} deleteTag={student.deleteTag}/>);
-    expect(screen.getByText("Ingaberg Orton")).toBeInTheDocument();
-})
-it("renders Student component with company", () => {
-      
-    render(<Student {...student} key={student.id} addTag={student.addTag} deleteTag={student.deleteTag}/>);
-    expect(screen.getByText("Company: Yadel")).toBeInTheDocument();
-})
-it("renders Student component with correct average", () => {
-      
-    render(<Student {...student} key={student.id} addTag={student.addTag} deleteTag={student.deleteTag}/>);
-    expect(screen.getByText("Company: Yadel")).toBeInTheDocument();
-}) 
+    it("renders Student component with name correctly", () => {
+        
+        render(<Student {...student} key={student.id} addTag={student.addTag} deleteTag={student.deleteTag}/>);
+        expect(screen.getByText("Ingaberg Orton")).toBeInTheDocument();
+    })
+    it("renders Student component with company", () => {
+        
+        render(<Student {...student} key={student.id} addTag={student.addTag} deleteTag={student.deleteTag}/>);
+        expect(screen.getByText("Company: Yadel")).toBeInTheDocument();
+    })
+    it("renders Student component with correct average", () => {
+        
+        render(<Student {...student} key={student.id} addTag={student.addTag} deleteTag={student.deleteTag}/>);
+        expect(screen.getByText("Company: Yadel")).toBeInTheDocument();
+    })
+    
+    it("Clicking the expand button should reveal grades", ()=>{
+        render(<Student {...student} key={student.id} addTag={student.addTag} deleteTag={student.deleteTag}/>);
+        fireEvent.click(screen.getByTestId("expand-button"));
+        expect(screen.getByText("Test 0 78%")).toBeInTheDocument();
+    })
+    it("Clicking the expand button twice should reveal grades then hide", ()=>{
+        render(<Student {...student} key={student.id} addTag={student.addTag} deleteTag={student.deleteTag}/>);
+        fireEvent.click(screen.getByTestId("expand-button"));
+        expect(screen.getByText("Test 0 78%")).toBeInTheDocument();
+        fireEvent.click(screen.getByTestId("expand-button"));
+        expect(screen.queryByText("Test 0 78%")).toBeNull();
 
 
+    })
 
 });
