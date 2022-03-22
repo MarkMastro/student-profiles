@@ -1,7 +1,7 @@
 import './Application.css';
 import {useState, useEffect} from "react";
 import axios from "axios"
-import Student from './Student';
+import Student from '../Student/Student';
 
 
 
@@ -74,7 +74,7 @@ const studentsArray = studentDataDisplay.map((student)=>{
  return <Student {...student} key={student.id} addTag={addTag} deleteTag={deleteTag}/>
 })
   return (
-    <div className="application" >
+    <div className="application" data-testid = "application">
         <input
         className='student-name-search' 
         type="text"

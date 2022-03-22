@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Application from './components/Application.js';
+import Application from './components/Application/Application.js';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 

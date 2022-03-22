@@ -5,7 +5,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {useState} from "react";
-import StudentTag from "./StudentTag";
+import StudentTag from "../StudentTag/StudentTag";
 
 
 library.add(fas, fab);
@@ -59,7 +59,7 @@ export default function Student(props){
                     <img className="student-picture" src={pic} alt="Student"/>
                     <div className='student-information'>
                         <h1 className="student-name">{firstName} {lastName}</h1> 
-                        <div className="student-profile">
+                        <div data-testid="student" className="student-profile">
                             <p>Email: {email}</p>
                             <p>Company: {company}</p>
                             <p>Skill: {skill}</p>
